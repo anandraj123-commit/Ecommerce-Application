@@ -1,0 +1,11 @@
+
+.course-page_addCourse {
+   display: flex;
+   justify-content: space-between;
+ }
+
+ .course-page_addCourse button {
+   height: "35px" ;
+   margin-top: "10px" ;
+ }
+ 

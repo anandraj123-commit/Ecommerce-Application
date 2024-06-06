@@ -26,7 +26,7 @@ app.use((err, req, res, next) => {
   res.status(500).json('Something broke!'); 
 });
 
-const url = 'mongodb://localhost:27017';
+const url = process.env.DBHOST;
 const dbName = 'udemy';
 
 
@@ -233,7 +233,7 @@ console.error(razorpay_order_id, razorpay_payment_id, razorpay_signature );
   }
 });
 }).catch(error=>{
-  console.error('Failed to connect to the database', err);
+  console.error('Failed to connect to the database', error);
   process.exit(1);
 })
   

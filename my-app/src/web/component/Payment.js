@@ -9,6 +9,8 @@ const Payment = (props) => {
    const navigationHandler = (path) => {
       navigate(path);
     };
+
+
     const handlePayment = async () => {
         const orderUrl = 'http://localhost:5001/api/create-order'; // Adjust if different 
         const paymentVerificationUrl = 'http://localhost:5001/api/verify-payment'; // Adjust if different    
@@ -20,11 +22,11 @@ const Payment = (props) => {
         const options = {
           key: 'rzp_test_3jPROWrRVEjA4T',
           amount: order.amount,
-          id:order._id,
+          id:order.id,
           currency: order.currency,
           name: 'Your Company',
           description: 'Test Transaction',
-          order_id: order.id,
+          order_id: order.order_id,
           handler: async (response) => {
             const verificationData = {
               razorpay_order_id: response.razorpay_order_id,
@@ -34,6 +36,7 @@ const Payment = (props) => {
             const verificationResponse = await axios.post(paymentVerificationUrl, verificationData);
             if (verificationResponse.data.status === 'success') {
               alert('Payment successful!');
+
             } else {
               alert('Payment verification failed!');
             }

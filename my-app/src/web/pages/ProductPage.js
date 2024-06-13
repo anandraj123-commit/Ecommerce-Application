@@ -9,7 +9,10 @@ const ProductPage = (props) => {
 
   useEffect(() => {
     axios.get('http://localhost:5001/api/courses')
-      .then(response => setCourses(response.data))
+      .then(response => {
+        console.log("response",response);
+        setCourses(response.data)
+  })
       .catch(error => console.error('Error fetching courses:', error));
   }, []);
 

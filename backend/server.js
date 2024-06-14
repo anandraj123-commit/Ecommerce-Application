@@ -52,13 +52,19 @@ const razorpay = new Razorpay({
   key_secret: process.env.RAZORPAY_SECRET
 });
 
+// const client = new Client({
+//   user: 'postgres',
+//   host: 'localhost',
+//   database: 'udemy',
+//   password: 'Anandraj12345/',
+//   port: 5432,
+// });
+
+
+
 const client = new Client({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'udemy',
-  password: 'Anandraj12345/',
-  port: 5432,
-});
+  connectionString: process.env.POSTGRES_URL,
+})
 
 client
 	.connect()

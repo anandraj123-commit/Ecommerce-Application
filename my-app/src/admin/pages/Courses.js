@@ -15,9 +15,14 @@ const Courses = () => {
     const textAreaRef = useRef();
     const priceRef = useRef();
     const imageUrlRef = useRef();
+
+    const apiUrl = process.env.REACT_APP_API_URL;
     
+
+    //'http://localhost:5001/api/courses'
+
     useEffect(() => {
-        axios.get('http://localhost:5001/api/courses')
+        axios.get(`${apiUrl}/api/courses`)
             .then(response => setCourses(response.data))
             .catch(error => console.error('Error fetching products:', error));
     }, []);
@@ -37,7 +42,10 @@ const Courses = () => {
             price : priceRef1.current.value,
             image : imageUrlRef1.current.value
        }
-        axios.post(`http://localhost:5001/api/courses`,course)
+
+       //http://localhost:5001/api/courses
+
+        axios.post(`${apiUrl}/api/courses`,course)
         .then(response => {
             inputCourseRef1.current.value = '';
             textAreaRef1.current.value = '';
@@ -60,7 +68,9 @@ const Courses = () => {
         }
         console.log("id",id);
         console.log("Course",course);
-        axios.patch(`http://localhost:5001/api/course/${id}`,course)
+        //http://localhost:5001/api/course/${id}
+
+        axios.patch(`${apiUrl}/api/course/${id}`,course)
         .then(response => {
             console.log("courses",courses);
             var foundIndex = courses.findIndex(x => x.id === id);
@@ -86,7 +96,7 @@ const Courses = () => {
           return p.id === id
         })
         if(courseExist){
-          axios.delete(`http://localhost:5001/api/course/${id}`)
+          axios.delete(`${apiUrl}/api/course/${id}`)
           .then(response => {
             setCourses(prev=>{
               return prev.filter(course=> {

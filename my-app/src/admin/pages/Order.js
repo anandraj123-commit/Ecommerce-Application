@@ -6,9 +6,12 @@ import '../asset/public.css';
 
 const Courses = () => {
     const [orders, setOrder] = useState([]);
-    
+
+    const apiUrl = process.env.REACT_APP_API_URL;
+
+    //http://localhost:5001/api/orders
     useEffect(() => {
-        axios.get('http://localhost:5001/api/orders')
+        axios.get(`${apiUrl}/api/orders`)
             .then(response => setOrder(response.data))
             .catch(error => console.error('Error fetching products:', error));
     }, []);

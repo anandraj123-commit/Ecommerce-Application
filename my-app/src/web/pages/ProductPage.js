@@ -7,8 +7,12 @@ const ProductPage = (props) => {
 
   const [courses, setCourses] = useState([]);
 
+  const apiUrl = process.env.REACT_APP_API_URL;
+
+  // 'http://localhost:5001/api/courses'
+
   useEffect(() => {
-    axios.get('http://localhost:5001/api/courses')
+    axios.get(`${apiUrl}/api/courses`)
       .then(response => {
         console.log("response",response);
         setCourses(response.data)

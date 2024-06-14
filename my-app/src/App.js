@@ -25,8 +25,12 @@ function App() {
     { path: "/admin/order", element: <Order /> }
   ]);
 
+  const apiUrl = process.env.REACT_APP_API_URL;
+
+  // 'http://localhost:5001/api/cart'
+
   useEffect(() => {
-    axios.get('http://localhost:5001/api/cart')
+    axios.get(`${apiUrl}/api/cart`)    
       .then(response => {
         setCart(response.data);
       })
@@ -40,8 +44,10 @@ function App() {
       return p.course === course.id
     })
 
+    //'http://localhost:5001/api/cart'
+
     if(!productExist){
-      axios.post('http://localhost:5001/api/cart', course)
+      axios.post(`${apiUrl}/api/cart`, course)
       .then(response => {
         setCart(prev=>{
           return [...prev,response.data]
@@ -54,8 +60,9 @@ function App() {
     let productExist = cart.find(p=>{
       return p.id === id
     })
+    //`http://localhost:5001/api/cart/${id}`
     if(productExist){
-      axios.delete(`http://localhost:5001/api/cart/${id}`)
+      axios.delete(`${apiUrl}/api/cart/${id}`)
       .then(response => {
         setCart(prev=>{
           return prev.filter(product=> {

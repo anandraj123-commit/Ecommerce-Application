@@ -9,11 +9,12 @@ const Payment = (props) => {
    const navigationHandler = (path) => {
       navigate(path);
     };
-
+    
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const handlePayment = async () => {
-        const orderUrl = 'http://localhost:5001/api/create-order'; // Adjust if different 
-        const paymentVerificationUrl = 'http://localhost:5001/api/verify-payment'; // Adjust if different    
+        const orderUrl = `${apiUrl}/api/create-order`; // Adjust if different 'http://localhost:5001/api/create-order'
+        const paymentVerificationUrl = `${apiUrl}/api/verify-payment`; // Adjust if different     'http://localhost:5001/api/verify-payment'
         const { data: order } = await axios.post(orderUrl, {
           amount: props.amount, // Amount in smallest currency unit (i.e., paise)
           currency: 'INR',

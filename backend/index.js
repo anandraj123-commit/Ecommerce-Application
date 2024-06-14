@@ -409,9 +409,9 @@ app.get('/api/orders', async(req, res) => {
   
 
 
-MongoClient.connect(url).then(client=>{
-  console.error('Connected successfully to MongoDB server');
-  const db = client.db(dbName);
+// MongoClient.connect(url).then(client=>{
+//   console.error('Connected successfully to MongoDB server');
+//   const db = client.db(dbName);
 
   // app.get('/api/courses', async(req, res) => {
   //   try{
@@ -600,22 +600,8 @@ MongoClient.connect(url).then(client=>{
 //   process.exit(1);
 // })
   
-})
+// })
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
